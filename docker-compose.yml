@@ -1,21 +1,44 @@
 version: "3.9"
 
 services:
-  postgres:
-    image: postgres:14
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+  # postgres:
+  #   image: postgres:14
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=postgres
+  #   ports:
+  #     - "5433:5432"
+  #   healthcheck:
+  #     test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
+  php:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        image: php:7-fpm
+        volumes:
+            - .:/code
+        environment:
+            DB_CONNECTION: mysql
+            DB_PORT: 3306
+            DB_HOST: mysql
+            DB_DATABASE: bincomphptest
+            DB_USERNAME: root
+            DB_PASSWORD: despicable01
+  mysql:
+    image: mysql:5.7
     ports:
-      - "5433:5432"
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+        - 13306:3306
+    environment:
+        MYSQL_DATABASE: bincomphptest
+        MYSQL_USER: root
+        MYSQL_PASSWORD: despicable01
+        MYSQL_ROOT_PASSWORD: despicable01
 
   app:
     build: .
