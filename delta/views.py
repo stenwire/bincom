@@ -29,33 +29,6 @@ class DisplayPollingUnitResult(APIView):
         return Response({'results': queryset})
 
 
-def DisplayTotalPollingUnitResult(request, pk, *args: Any, **kwargs: Any):
-        '''
-        query polling unit table with lga_id, pick the uniqueid
-        then use the uniqueid to query announced polling unit table the sum the result
-        '''
-        poll = PollingUnit.objects.filter(lga_id=pk)
-        poll_list = []
-        for p in poll:
-            poll_list.append(p.uniqueid)
-
-        pus_list = []
-        for i in poll_list:
-            pus = AnnouncedPuResults.objects.filter(polling_unit_uniqueid=i)
-            pus_list.append(pus)
-
-        res = []
-        for j in pus_list:
-            for x in j:
-                res.append(x.party_score)
-
-        total = sum(res)
-        print(poll_list)
-        context = {
-            'result': total,
-        }
-        return render(request, 'total_polling_unit_result.html', context)
-
 def StorePollingUnitResult(request):
     if request.method == "POST":
         form = PollingUnitResultSerializer(request.POST)
@@ -66,3 +39,39 @@ def StorePollingUnitResult(request):
     else:
         form = PollingUnitResultSerializer()
     return render(request, 'store_result.html', {'form': form})
+
+
+
+def DisplayTotalPollingUnitResult(request):
+    if request.method == 'POST':
+        selected_item = request.POST.get('selected_item')
+        data = PollingUnit.objects.filter(lga_id=selected_item)
+    else:
+        data = PollingUnit.objects.all()
+
+    items = Lga.objects.values_list('lga_id', flat=True)  # Get all item names
+
+    poll_list = []
+    for p in data:
+        poll_list.append(p.uniqueid)
+
+    pus_list = []
+    for i in poll_list:
+        pus = AnnouncedPuResults.objects.filter(polling_unit_uniqueid=i)
+        pus_list.append(pus)
+
+    res = []
+    res_dict = {}
+    for j in pus_list:
+        for x in j:
+            res_dict[x.party_abbreviation] = x.party_score
+            res.append(x.party_score)
+
+    total = sum(res_dict.values())
+
+    context = {
+        'items': items,
+        'data': res_dict,
+        'total': total,
+    }
+    return render(request, 'total_polling_unit_result.html', context)
