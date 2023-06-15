@@ -1,4 +1,4 @@
-### If docker doesn't run ssuccesfully(just maybe), bro I had like less than 10hrs to setup a DB that I'm not familiar with, understand the db, fix and understand model relationships and write logic, worst of all I had to deal with FE, why can't I just write an API??????
+### If docker doesn't run ssuccesfully(just maybe), bro I had like less than 0hrs to setup a DB that I'm not familiar with, understand the db, fix and understand model relationships and write logic, worst of all I had to deal with FE, why can't I just write an API??????
 
 ## How to use: For mere mortals
 ### Requirements:
