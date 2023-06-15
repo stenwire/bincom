@@ -1,4 +1,4 @@
-### If docker doesn't run successfully (just maybe --- hehehe it probably won't), It's because I used a phpMyAdmin MySQL db...Bro I had like less than 0hrs to set up a DB that I'm not very familiar with, understand the db, fix and understand model relationships and write logic, worst of all I had to deal with FE, why can't I just write an API??????
+> If docker doesn't run successfully (just maybe --- hehehe it probably won't), It's because I used a phpMyAdmin MySQL db...Bro I had like less than 0hrs to set up a DB that I'm not very familiar with, understand the db, fix and understand model relationships and write logic, worst of all I had to deal with FE, why can't I just write an API??????
 
 ## How to use: For mere mortals
 ### Requirements:
