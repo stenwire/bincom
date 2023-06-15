@@ -1,4 +1,9 @@
-> If docker doesn't run successfully (just maybe --- hehehe it probably won't), It's because I used a phpMyAdmin MySQL db...Bro I had like less than 0hrs to set up a DB that I'm not very familiar with, understand the db, fix and understand model relationships and write logic, worst of all I had to deal with FE, why can't I just write an API??????
+## Steps I took
+- setup phpmyAdmin on my local machine
+- Load db and tables from sql file
+- setup default django project
+- edit django settings to connect to phpmyAdmin MySQL database
+- fulfill task
 
 ## How to use: For mere mortals
 ### Requirements:
