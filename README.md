@@ -1,18 +1,4 @@
-# djangoer
-A production-ready template for Django applications
-
-## Introduction
-This Django template was created out of a need for consistent structure for projects with a setup that's easy to understand and use with as minimal additional setup as possible.
-
-### What is hoped to be achieved
-- Simplicity; no need for bloated classes and huge utils that you'll likely never use. Everything here should be very much needed in most projects
-- Low barrier for entry; a template that is easy to start with and does not seem too advanced for beginners to use
-- Production-ready; the above does not remove the important fact that this should be always production-ready without obvious faults
-- Consistency; a smell for codebases is you not having a 'knowing' of where certain code is located. A wanted structure is one that's easy to navigate
-
-### What is not hoped to be achieved
-- Utility dump; this template will not be where all sorts of utilities are dumped because, 'why not?'.
-- I'm out of points, sorry. This kind of stuff should be like 3 points or so, but then...
+### If docker doesn't run ssuccesfully(just maybe), bro I had like less than 10hrs to setup a DB that I'm not familiar with, understand the db, fix and understand model relationships and write logic, worst of all I had to deal with FE, why can't I just write an API??????
 
 ## How to use: For mere mortals
 ### Requirements:
